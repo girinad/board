@@ -24,7 +24,10 @@ gem 'jquery-rails'
 
 gem 'devise'
 
-# To use ActiveModel has_secure_password
+gem 'haml'
+gem 'haml-rails'
+
+# To use ActiveModel has_sebuncure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
