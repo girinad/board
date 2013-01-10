@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  filename: MyString
+  primary_photo: false
+  item: 
+
+two:
+  filename: MyString
+  primary_photo: false
+  item: 
