@@ -14,7 +14,16 @@ Board::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :users do
+    resources :items do
+      resources :messages
+      resources :tags
+      resources :photos
+    end
+  end
+  
+  resources :tags
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do
