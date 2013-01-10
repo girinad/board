@@ -11,7 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110074747) do
+ActiveRecord::Schema.define(:version => 20130110180905) do
+
+  create_table "items", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "messages", :force => true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "messages", ["item_id"], :name => "index_messages_on_item_id"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+
+  create_table "photos", :force => true do |t|
+    t.string   "filename"
+    t.boolean  "primary_photo"
+    t.integer  "item_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "photos", ["item_id"], :name => "index_photos_on_item_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "tag"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tags_items", :force => true do |t|
+    t.integer "tag_id"
+    t.integer "item_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
