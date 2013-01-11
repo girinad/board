@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110180905) do
+ActiveRecord::Schema.define(:version => 20130111104216) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(:version => 20130110180905) do
   end
 
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "items_tags", :force => true do |t|
+    t.integer "tag_id"
+    t.integer "item_id"
+  end
 
   create_table "messages", :force => true do |t|
     t.string   "subject"
@@ -50,11 +55,6 @@ ActiveRecord::Schema.define(:version => 20130110180905) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "tags_items", :force => true do |t|
-    t.integer "tag_id"
-    t.integer "item_id"
   end
 
   create_table "users", :force => true do |t|
