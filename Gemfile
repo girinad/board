@@ -20,12 +20,22 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+# group :development do
+#  gem 'mailcatcher'
+#  gem 'foreman'
+# end
+
 gem 'jquery-rails'
 
 gem 'devise'
 
 gem 'haml'
 gem 'haml-rails'
+
+group :test, :development do
+  gem 'rspec'
+  gem 'rspec-rails', '~> 2.0'
+end
 
 # To use ActiveModel has_sebuncure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
