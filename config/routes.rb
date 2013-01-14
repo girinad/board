@@ -1,4 +1,14 @@
 Board::Application.routes.draw do
+  namespace :dashboard do
+#    resources :users do
+      resources :items do
+        resources :messages
+        resources :tags
+        resources :photos
+      end
+#    end
+  end
+
   devise_for :users
 
   # The priority is based upon order of creation:
@@ -14,13 +24,6 @@ Board::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users do
-    resources :items do
-      resources :messages
-      resources :tags
-      resources :photos
-    end
-  end
   
   resources :tags
   
@@ -59,7 +62,7 @@ Board::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'dashboard/items#index'
 
   # See how all your routes lay out with "rake routes"
 
