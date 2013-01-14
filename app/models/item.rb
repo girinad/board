@@ -1,16 +1,16 @@
 class Item < ActiveRecord::Base
   attr_accessible :description, :title
   
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_many :messages
   has_many :photos
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags, uniq: true
   
   #adds tags to an item
   def set_tags(tags)
     if tags_are_valid? tags
       Item.split_tags(tags).each do |tag|
-        self.tags.create tag: tag
+        self.tags.create tag: tag unless self.tags.collect(&:tag).include? tag
       end
     end
   end
