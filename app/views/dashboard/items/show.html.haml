@@ -1,0 +1,15 @@
+%p#notice= notice
+
+#title 
+  = @item.title
+
+#description
+  = @item.description
+
+#tags
+  = @item.tags
+
+
+= link_to 'Edit', edit_dashboard_item_path(@item)
+\|
+= link_to 'Back', dashboard_items_path
