@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :title
+  attr_accessible :description, :title, :user_id
   
   belongs_to :user, dependent: :destroy
   has_many :messages
@@ -8,28 +8,10 @@ class Item < ActiveRecord::Base
   
   #adds tags to an item
   def set_tags(tags)
-    if tags_are_valid? tags
-      Item.split_tags(tags).each do |tag|
-        self.tags.create tag: tag unless self.tags.collect(&:tag).include? tag
+    if Tag.tags_are_valid? tags
+      Tag.split_tags(tags).each do |tag|
+        self.tags << Tag.where(tag: tag).first_or_create
       end
-    end
-  end
-  
-  #checks if tags is an array or a string that can be converted to an array using ,
-  def tags_are_valid?(tags)
-    unless tags.is_a?(Array)
-      tags = Item.split_tags(tags)
-      tags.kind_of?(Array)
-    else
-      true
-    end
-  end
-  
-  #splits and remove spaces form line of tags
-  def self.split_tags(tags)
-    _tags = []
-    tags.split(',').each do |tag|
-      _tags << tag.strip!
     end
   end
 

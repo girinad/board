@@ -23,8 +23,8 @@ describe Item do
   
   describe '#tags_are_valid?' do
     it "checks if tags can be converted to an array of strings by , separator" do
-      @item.tags_are_valid?(['Furniture', 'Chair']).should == true
-      @item.tags_are_valid?(@tags).should == true
+      Tag.tags_are_valid?(['Furniture', 'Chair']).should == true
+      Tag.tags_are_valid?(@tags).should == true
     end
   end
   
