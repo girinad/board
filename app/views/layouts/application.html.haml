@@ -1,0 +1,23 @@
+%html
+  %head
+    %title Declarations
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    #auth_status
+      - if current_user
+        = link_to current_user.email, edit_user_path(current_user)
+        |
+        = link_to 'Exit', destroy_user_session_path, method: :delete
+      - else
+        = link_to 'Enter', new_user_session_path
+        |
+        = link_to 'Sign Up', new_user_registration_path
+
+    #flashing
+      - for type, message in flash
+        .flash(class="#{type}")= message
+
+    = yield

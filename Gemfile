@@ -35,6 +35,9 @@ gem 'haml-rails'
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails', '~> 2.0'
+
+  gem 'hpricot'
+  gem 'ruby_parser'
 end
 
 # To use ActiveModel has_sebuncure_password
