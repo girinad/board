@@ -20,6 +20,8 @@ class Item < ActiveRecord::Base
     unless tags.is_a?(Array)
       tags = Item.split_tags(tags)
       tags.kind_of?(Array)
+    else
+      true
     end
   end
   
