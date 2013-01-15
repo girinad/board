@@ -8,7 +8,7 @@
   %body
     #auth_status
       - if current_user
-        = link_to current_user.email, edit_user_path(current_user)
+        = link_to current_user.email, edit_user_registration_path(current_user)
         |
         = link_to 'Exit', destroy_user_session_path, method: :delete
       - else
