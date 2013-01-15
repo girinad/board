@@ -45,6 +45,7 @@ class Dashboard::ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
+        @item.set_tags(params[:tags])
         format.html { redirect_to dashboard_item_path(@item), notice: 'Item was successfully updated.' }
       else
         format.html { render action: "edit" }

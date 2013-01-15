@@ -19,6 +19,11 @@ describe Item do
       @item.tags.collect(&:tag).sort.should == ['Apple', 'Chair','Furniture', 'bubble']
     end
     
+    it "checks update of tags" do
+      @item.set_tags(@tags)
+      @item.set_tags("Apple,bubble")
+      @item.tags.collect(&:tag).sort.should == ['Apple', 'bubble']
+    end
   end
   
   describe '#tags_are_valid?' do
