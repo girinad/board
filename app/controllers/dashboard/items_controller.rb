@@ -1,6 +1,6 @@
 class Dashboard::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = current_user.items.all
 
     respond_to do |format|
       format.html
@@ -8,7 +8,7 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -24,7 +24,7 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 
   def create
@@ -41,7 +41,7 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -53,7 +53,7 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
     @item.destroy
 
     respond_to do |format|
