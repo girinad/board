@@ -6,6 +6,10 @@ class Item < ActiveRecord::Base
   has_many :photos
   has_and_belongs_to_many :tags, uniq: true
   
+  validates :title, :presence => true
+  validates :title, :length => {:in => 3..255}
+  validates_associated :tags
+  
   #adds tags to an item
   def set_tags(tags)
     if Tag.tags_are_valid? tags

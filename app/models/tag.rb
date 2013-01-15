@@ -3,8 +3,7 @@ class Tag < ActiveRecord::Base
 
   has_and_belongs_to_many :items, uniq: true
   
-  validates :tag, :uniqueness => true
-  
+  validates :tag, :uniqueness => { :case_sensitive => false }
 
   #checks if tags is an array or a string that can be converted to an array using ,
   def self.tags_are_valid?(tags)

@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   
   has_many :items, dependent: :destroy
   has_many :messages
+  
+  validates :email, :uniqueness => { :case_sensitive => false }
 end
