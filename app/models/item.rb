@@ -1,5 +1,10 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :title
+  
+  STATUS_HIDDEN = 0
+  STATUS_PUBLISHED = 1
+  STATUS_SOLD = 2
+  
+  attr_accessible :description, :title, :contact_phone, :contact_name, :status, :sold_at
   
   belongs_to :user
   has_many :messages
@@ -9,6 +14,8 @@ class Item < ActiveRecord::Base
   validates :title, :presence => true
   validates :title, :length => {:in => 3..255}
   validates_associated :tags
+  validates :contact_phone, :presence => true
+  validates :contact_name, :presence => true
   
   #adds tags to an item
   def set_tags(tags)

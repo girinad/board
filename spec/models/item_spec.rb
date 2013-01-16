@@ -4,7 +4,7 @@ describe Item do
   
   before(:each) do
     @tags = 'Furniture, Chair'
-    @item = Item.create title: "Chair"
+    @item = Item.create title: "Chair", contact_phone: "111-111-1111", contact_name: "Seller"
   end
     
   describe "#set_tags" do
@@ -36,17 +36,30 @@ describe Item do
   describe 'validation of an item model' do
     
     it "validates that title presents" do
-      item = Item.new(title: "Title presents")
-      item.valid?.should be_true
+      item = Item.new(contact_phone: "111", contact_name: "name")
+      item.valid?.should be_false
     end
     
     it "validates that title length is between 3..255" do
-      item_short = Item.new(title: "12")
+      @item.title = "12"
+      item_short = @item
       item_short.valid?.should be_false
-      item_correct_length = Item.new(title: "123")
+      @item.title = "123"
+      item_correct_length = @item
       item_correct_length.valid?.should be_true
-      item_long = Item.new(title: (0..300).to_a.join)
+      @item.title = (0..300).to_a.join
+      item_long = @item
       item_long.valid?.should be_false
+    end
+    
+    it "validates that contact phone presents" do
+      item = Item.new(title: "Title presents", contact_name: "name")
+      item.valid?.should be_false
+    end
+    
+    it "validates that contact name presents" do
+      item = Item.new(title: "Title presents", contact_phone: "111")
+      item.valid?.should be_false
     end
     
   end
