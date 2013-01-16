@@ -30,6 +30,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise-i18n'
 
+gem 'erb2haml'
+
 gem 'haml'
 gem 'haml-rails'
 
