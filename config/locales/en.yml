@@ -1,5 +1,13 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
+# English translations for Model Items
 en:
-  page_title: "Board"
+   page_title: "Bulletin Board"
+  
+   welcome: "Welcome to the Bulletin Board"
+  
+   link:
+     exit: "Exit"
+     enter: "Login"
+     signup: "Registration"
+
+   button:
+     save: "Save"
