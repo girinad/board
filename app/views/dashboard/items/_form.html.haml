@@ -1,22 +1,23 @@
 = form_for @item, as: :item, url: @item.new_record? ? dashboard_items_path : dashboard_item_path(@item) do |f|
   - if @item.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+      %h2= t "item.error.form"
+      / "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
       %ul
         - @item.errors.full_messages.each do |msg|
           %li= msg
-  #title 
-    = f.label :title
+  #title
+    %b= f.label :title
     = f.text_field :title
   
   #description
-    = f.label :description
+    %b= f.label :description
     %br
     = f.text_area :description
   
   #tags
-    = label_tag :tags
+    %b= f.label :tags
     = text_field_tag :tags, f.object.tags.collect(&:tag).join(", ")
 
   .actions
-    = f.submit 'Save'
+    = f.submit t('button.save')

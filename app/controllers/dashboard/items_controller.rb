@@ -33,7 +33,7 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
     respond_to do |format|
       if @item.save
         @item.set_tags(params[:tags])
-        format.html { redirect_to dashboard_item_path(@item), notice: 'Item was successfully created.' }
+        format.html { redirect_to dashboard_item_path(@item), notice: t('item.notice.saved') }
       else
         format.html { render action: "new" }
       end
@@ -46,7 +46,7 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
     respond_to do |format|
       if @item.update_attributes(params[:item])
         @item.set_tags(params[:tags])
-        format.html { redirect_to dashboard_item_path(@item), notice: 'Item was successfully updated.' }
+        format.html { redirect_to dashboard_item_path(@item), notice: t('item.notice.updated') }
       else
         format.html { render action: "edit" }
       end
@@ -58,7 +58,7 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to dashboard_items_url}
+      format.html { redirect_to dashboard_items_url, notice: t('item.notice.deleted')}
     end
   end
 end

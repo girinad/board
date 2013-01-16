@@ -1,24 +1,22 @@
-%p#notice= notice
-
 #title 
   %b
-    = label_tag (:title)
+    = label_tag t 'activerecord.attributes.item.title'
     \:
   = @item.title
 
 #description
   %b
-    = label_tag :description
+    = label_tag t 'activerecord.attributes.item.description'
     \:
   = @item.description
 
 #tags
   %b
-    = label_tag :tags
+    = label_tag t 'activerecord.attributes.item.tags'
     \:
   = @item.tags.collect(&:tag).join(", ")
 
 
-= link_to 'Edit', edit_dashboard_item_path(@item)
+= link_to t('item.link.edit'), edit_dashboard_item_path(@item)
 \|
-= link_to 'Back', dashboard_items_path
+= link_to t('item.link.back'), dashboard_items_path

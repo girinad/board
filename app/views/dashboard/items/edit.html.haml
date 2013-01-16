@@ -1,7 +1,7 @@
-%h1 Editing item
+%h1= t 'item.title.edit'
 
 = render 'form'
 
-= link_to 'Show', dashboard_item_path(@item)
+= link_to t('item.link.show'), dashboard_item_path(@item)
 \|
-= link_to 'Back', dashboard_items_path
+= link_to t('item.link.back'), dashboard_items_path
