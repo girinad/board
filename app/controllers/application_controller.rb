@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def set_locale
-    I18n.local = params[:lang] if params[:lang].present?
+    if params[:ln].present?
+      I18n.locale = session[:ln] = params[:ln]
+    else
+      I18n.locale = session[:ln]
+    end
   end
-  
+
 end
