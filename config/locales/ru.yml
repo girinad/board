@@ -13,3 +13,7 @@ ru:
 
   button:
     save: "Сохранить"
+    
+  time:
+    formats:
+      full: "%d-%m-%Y %H:%M:%S"

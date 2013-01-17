@@ -1,41 +1,57 @@
 # English trnaslations for Item model
 
 en:
-   item:
-     title:
-       list: "List"
-       new: "New Ad"
-       edit: "Edit Ad"
+  item:
+    title:
+      list: "List"
+      new: "New Ad"
+      edit: "Edit Ad"
 
-     link:
-       my_items: "My Ads"
-       new: "Add Announcement"
-       edit: "Edit"
-       delete: "Delete"
-       back: "Back to list"
-       show: "View"
+    link:
+      my_items: "My Ads"
+      new: "Add Announcement"
+      edit: "Edit"
+      delete: "Delete"
+      back: "Back to list"
+      show: "View"
 
-     notice:
-       saved: "Ad Posted Successfully"
-       updated: "Changes saved successfully"
-       deleted: "This ad is removed"
-     warning:
-       delete: "Are you sure?"
-     error:
-       form: "To create or save changes to the ad - correct errors below"
+    notice:
+      saved: "Ad Posted Successfully"
+      updated: "Changes saved successfully"
+      deleted: "This ad is removed"
+    warning:
+      delete: "Are you sure?"
+    error:
+      form: "To create or save changes to the ad - correct errors below"
 
-   activerecord:
-     models:
-       item: "Announcement"
-     attributes:
-       item:
-         title: "Title"
-         description: "Description"
-         tags: "Search Tags"
-     errors:
-       models:
-         item:
-           attributes:
-             title:
-               blank: "Ad - required!"
-               too_short: "Ads should be from 3 to 255 characters"
+    state:
+      label:
+        hidden: "Hiddend"
+        published: "Published"
+        sold: "Sold"
+      event:
+        hide: "Hide"
+        publish: "Publish"
+        sell: "Mark as Sold"
+
+  activerecord:
+    models:
+      item: "Announcement"
+    attributes:
+      item:
+        title: "Title"
+        description: "Description"
+        tags: "Search Tags"
+        created_at: "Created At"
+        state: "Status"
+        contact_phone: "Contact Phone"
+        contact_name: "Contact Name"
+    errors:
+      models:
+        item:
+          attributes:
+            title:
+              blank: "Ad - required!"
+              too_short: "Ads should be from 3 to 255 characters"
+            contact_phone: "Contact Phone - required!"
+            contact_name: "Contact Name - required!"

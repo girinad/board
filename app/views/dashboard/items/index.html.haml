@@ -3,7 +3,9 @@
 
 %table
   %tr
-    %th
+    %th= Item.human_attribute_name(:title)
+    %th= Item.human_attribute_name(:created_at)
+    %th= Item.human_attribute_name(:state)
     %th
     %th
 
@@ -11,6 +13,8 @@
     %tr
       %td
         %b= link_to item.title, dashboard_item_path(item)
+      %td= l item.created_at, :format => :full
+      %td= t ('item.state.label.' + (item.state.presence ? item.state.to_s : 'hidden'))
       %td= link_to t('item.link.edit'), edit_dashboard_item_path(item)
       %td= link_to t('item.link.delete'), dashboard_item_path(item), method: :delete, data: { confirm: t('item.warning.delete') }
 

@@ -14,7 +14,20 @@
     %b= f.label :description
     %br
     = f.text_area :description
-  
+
+  #contact_phone
+    %b= f.label :contact_phone
+    = f.text_field :contact_phone
+
+  #contact_name
+    %b= f.label :contact_name
+    = f.text_field :contact_name
+
+  #state
+    - if @item.new_record?
+      = f.check_box :state, @item.state
+      %b= label_tag t('item.state.event.publish')
+
   #tags
     %b= f.label :tags
     = text_field_tag :tags, f.object.tags.collect(&:tag).join(", ")

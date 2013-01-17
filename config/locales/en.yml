@@ -1,13 +1,17 @@
 # English translations for Model Items
 en:
-   page_title: "Bulletin Board"
-  
-   welcome: "Welcome to the Bulletin Board"
-  
-   link:
-     exit: "Exit"
-     enter: "Login"
-     signup: "Registration"
+  page_title: "Bulletin Board"
 
-   button:
-     save: "Save"
+  welcome: "Welcome to the Bulletin Board"
+
+  link:
+    exit: "Exit"
+    enter: "Login"
+    signup: "Registration"
+
+  button:
+    save: "Save"
+
+  time:
+    formats:
+      full: "%m-%d-%Y %H:%M:%S"
