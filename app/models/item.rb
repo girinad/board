@@ -1,11 +1,7 @@
 class Item < ActiveRecord::Base
   
-  STATUS_HIDDEN = 0
-  STATUS_PUBLISHED = 1
-  STATUS_SOLD = 2
-  
-  attr_accessible :description, :title, :contact_phone, :contact_name, :status, :sold_at
-  
+  attr_accessible :description, :title, :contact_phone, :contact_name, :state, :sold_at
+
   belongs_to :user
   has_many :messages
   has_many :photos
@@ -16,7 +12,36 @@ class Item < ActiveRecord::Base
   validates_associated :tags
   validates :contact_phone, :presence => true
   validates :contact_name, :presence => true
-  
+
+  state_machine :initial => :hidden do
+    after_transition any - :sold => :sold, :do => :set_sale_date_time
+
+    event :publish do
+      transition :hidden => :published
+    end
+
+    event :sell do
+      transition :hidden => :sold
+      transition :published => :sold
+    end
+
+    event :hide do
+      transition :published => :hidden
+    end
+
+    state :hidden, :sold do
+      def visible?
+        false
+      end
+    end
+
+    state :published do
+      def visible?
+        true
+      end
+    end
+  end
+
   #adds tags to an item
   def set_tags(tags)
     if Tag.tags_are_valid? tags
@@ -25,6 +50,11 @@ class Item < ActiveRecord::Base
         self.tags << Tag.where(tag: tag).first_or_create
       end
     end
+  end
+
+  #sets item sale date
+  def set_sale_date_time
+    @sold_at = Time.new
   end
 
 end

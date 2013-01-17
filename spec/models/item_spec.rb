@@ -64,4 +64,52 @@ describe Item do
     
   end
   
+  describe 'item state_machine' do
+    it "publishes an item" do
+      @item.publish
+      @item.visible?.should be_true
+      @item.state.should eq 'published'
+    end
+
+    it "hides an item" do
+      @item.hide
+      @item.visible?.should be_false
+      @item.state.should eq 'hidden'
+    end
+
+    it "sells a published item" do
+      @item.publish
+      @item.visible?.should be_true
+      @item.sell
+      @item.visible?.should be_false
+      @item.state.should eq 'sold'
+      @item.sold_at == Time.new
+    end
+
+    it "sells a hidden item" do
+      @item.sell
+      @item.visible?.should be_false
+      @item.state.should eq 'sold'
+      @item.sold_at == Time.new
+    end
+
+    it "tries to publish a sold item" do
+      @item.sell
+      @item.publish
+      @item.visible?.should be_false
+      @item.state.should eq 'sold'
+      @item.sold_at == Time.new
+    end
+
+    it "tries to publish a sold item" do
+      @item.sell
+      @item.publish
+      @item.visible?.should be_false
+      @item.state.should eq 'sold'
+      @item.sold_at == Time.new
+    end
+
+  end
+
+  
 end

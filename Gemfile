@@ -35,6 +35,8 @@ gem 'erb2haml'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'state_machine'
+
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails', '~> 2.0'
