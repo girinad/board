@@ -37,6 +37,9 @@ gem 'haml-rails'
 
 gem 'state_machine'
 
+gem 'carrierwave'
+gem 'rmagick'
+
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails', '~> 2.0'

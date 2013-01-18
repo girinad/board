@@ -9,6 +9,7 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
 
   def show
     @item = current_user.items.find(params[:id])
+    @photos = @item.photos
 
     respond_to do |format|
       format.html
@@ -17,6 +18,7 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
 
   def new
     @item = Item.new
+    @item.photos.build
 
     respond_to do |format|
       format.html
@@ -25,11 +27,13 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
 
   def edit
     @item = current_user.items.find(params[:id])
+    @item.photos.build
   end
 
   def create
     @item = current_user.items.build(params[:item])
-
+    @item.photos.build
+    
     respond_to do |format|
       if @item.save
         @item.set_tags(params[:tags])

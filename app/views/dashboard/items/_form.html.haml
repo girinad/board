@@ -1,4 +1,4 @@
-= form_for @item, as: :item, url: @item.new_record? ? dashboard_items_path : dashboard_item_path(@item) do |f|
+= form_for @item, as: :item, url: @item.new_record? ? dashboard_items_path : dashboard_item_path(@item), :html => {:multipart => true} do |f|
   - if @item.errors.any?
     #error_explanation
       %h2= t "item.error.form"
@@ -14,6 +14,14 @@
     %b= f.label :description
     %br
     = f.text_area :description
+  
+  #photos
+    = f.fields_for :photos do |photo|
+      - if photo.object.new_record?
+        = photo.file_field :photo
+      - else
+        = image_tag(photo.object.image.url(:thumb))
+        = photo.check_box :_destroy
 
   #contact_phone
     %b= f.label :contact_phone

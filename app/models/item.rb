@@ -1,10 +1,11 @@
 class Item < ActiveRecord::Base
   
-  attr_accessible :description, :title, :contact_phone, :contact_name, :state, :sold_at
+  attr_accessible :description, :title, :contact_phone, :contact_name, :state, :sold_at, :photos_attributes
 
   belongs_to :user
   has_many :messages
-  has_many :photos
+  has_many :photos, :dependent => :destroy
+  accepts_nested_attributes_for :photos, :allow_destroy => true
   has_and_belongs_to_many :tags, uniq: true
   
   validates :title, :presence => true
