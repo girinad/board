@@ -24,17 +24,17 @@ ru:
     error:
       form: "Для создания или сохранения изменений в объявлении - исправте ошибки приведенные ниже"
 
-    state:
-      label:
-        hidden: "Не опубликовано"
-        published: "Oпубликовано"
-        sold: "Продано"
-      event:
-        hide: "Не опубликовать"
-        publish: "Oпубликовать"
-        sell: "Пометить как проданное"
-
   activerecord:
+    state_machines:
+      item:
+        states:
+          hidden: "Не опубликовано"
+          published: "Oпубликовано"
+          sold: "Продано"
+        events:
+          hide: "Не опубликовать"
+          publish: "Oпубликовать"
+          sell: "Пометить как проданное"
     models:
       item: "Объявление"
     attributes:

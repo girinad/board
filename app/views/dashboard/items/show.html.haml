@@ -1,18 +1,38 @@
+- scope = {:scope => [:activerecord, :attributes, :item]}
+
 #title 
   %b
-    = label_tag t 'activerecord.attributes.item.title'
+    = label_tag t :title, scope
     \:
   = @item.title
 
 #description
   %b
-    = label_tag t 'activerecord.attributes.item.description'
+    = label_tag t :description, scope
     \:
   = @item.description
 
+#contact_phone
+  %b
+    = label_tag t :contact_phone, scope
+    \:
+  = @item.contact_phone
+
+#contact_name
+  %b
+    = label_tag t :contact_name, scope
+    \:
+  = @item.contact_name
+
+#state
+  %b
+    = label_tag t :state, scope
+    \:
+  = t @item.state, :scope => [:activerecord, :state_machines, :item, :states]
+
 #tags
   %b
-    = label_tag t 'activerecord.attributes.item.tags'
+    = label_tag t :tags, scope
     \:
   = @item.tags.collect(&:tag).join(", ")
 

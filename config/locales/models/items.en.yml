@@ -24,17 +24,17 @@ en:
     error:
       form: "To create or save changes to the ad - correct errors below"
 
-    state:
-      label:
-        hidden: "Hiddend"
-        published: "Published"
-        sold: "Sold"
-      event:
-        hide: "Hide"
-        publish: "Publish"
-        sell: "Mark as Sold"
-
   activerecord:
+    state_machines:
+      item:
+        states:
+          hidden: "Hiddend"
+          published: "Published"
+          sold: "Sold"
+        events:
+          hide: "Hide"
+          publish: "Publish"
+          sell: "Mark as Sold"
     models:
       item: "Announcement"
     attributes:
