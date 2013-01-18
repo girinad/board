@@ -43,6 +43,9 @@ group :test, :development do
 
   gem 'hpricot'
   gem 'ruby_parser'
+
+  gem 'http_accept_language'
+  gem 'routing-filter'
 end
 
 # To use ActiveModel has_sebuncure_password

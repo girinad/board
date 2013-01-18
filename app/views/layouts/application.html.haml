@@ -18,9 +18,9 @@
         = link_to t('link.signup'), new_user_registration_path
       - 10.times do
         = '&nbsp'.html_safe
-      = link_to 'RU', request.env['PATH_INFO'] + '?ln=ru'
+      = link_to 'RU', '/ru' + request.env['PATH_INFO']
       |
-      = link_to 'EN', request.env['PATH_INFO'] + '?ln=en'
+      = link_to 'EN', '/en' + request.env['PATH_INFO']
 
     #flashing
       - for type, message in flash

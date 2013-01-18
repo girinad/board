@@ -1,4 +1,9 @@
 Board::Application.routes.draw do
+
+  Rails.application.routes.draw do
+    filter :locale
+  end
+
   namespace :dashboard do
 #    resources :users do
       resources :items do
