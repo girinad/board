@@ -30,8 +30,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise-i18n'
 
-gem 'erb2haml'
-
 gem 'haml'
 gem 'haml-rails'
 
@@ -40,16 +38,20 @@ gem 'state_machine'
 gem 'carrierwave'
 gem 'rmagick'
 
-group :test, :development do
+group :test do
   gem 'rspec'
   gem 'rspec-rails', '~> 2.0'
-
-  gem 'hpricot'
-  gem 'ruby_parser'
-
-  gem 'http_accept_language'
-  gem 'routing-filter'
 end
+
+group :development do
+#  gem 'erb2haml'
+end
+
+gem 'hpricot'
+gem 'ruby_parser'
+
+gem 'http_accept_language'
+gem 'routing-filter'
 
 # To use ActiveModel has_sebuncure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -65,3 +67,4 @@ end
 
 # To use debugger
 # gem 'debugger'
+
