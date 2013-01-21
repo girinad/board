@@ -20,10 +20,15 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
 
   def create
     @item = current_user.items.build(params[:item])
-    @item.photos.build
+    #@item.photos.build
     
     if @item.save
       @item.set_tags(params[:tags])
+
+      if @item.photos.last.id && params[:item][:main_photo_id] == 'new'
+        @item.set_main_photo(@item.photos.last.id)
+      end
+
       redirect_to dashboard_item_path(@item), notice: t('item.notice.saved')
     else
       render action: "new"
@@ -35,6 +40,13 @@ class Dashboard::ItemsController < Dashboard::ApplicationController
 
     if @item.update_attributes(params[:item])
       @item.set_tags(params[:tags])
+
+      if params[:item][:main_photo_id] == 'new'
+        @item.set_main_photo(@item.photos.last.id)
+      else
+        @item.set_main_photo(params[:item][:main_photo_id])
+      end
+
       redirect_to dashboard_item_path(@item), notice: t('item.notice.updated')
     else
       render action: "edit"

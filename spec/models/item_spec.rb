@@ -102,5 +102,12 @@ describe Item do
     end
   end
 
+  describe "#set_main_photo" do
+    it "sets item main photo id" do
+      @item.set_main_photo(9)
+      item = Item.find(@item.id)
+      item.main_photo_id.should == 9
+    end
+  end
   
 end

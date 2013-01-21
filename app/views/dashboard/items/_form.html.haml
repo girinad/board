@@ -18,8 +18,10 @@
   #photos
     = f.fields_for :photos do |photo|
       - if photo.object.new_record?
+        = f.radio_button :main_photo_id, 'new'
         = photo.file_field :photo
       - else
+        = f.radio_button :main_photo_id, photo.object.id
         = image_tag(photo.object.photo.url(:thumb))
         = photo.check_box :_destroy
       %br

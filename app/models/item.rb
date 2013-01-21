@@ -1,10 +1,11 @@
 class Item < ActiveRecord::Base
   
-  attr_accessible :description, :title, :contact_phone, :contact_name, :state, :sold_at, :photos_attributes
+  attr_accessible :description, :title, :contact_phone, :contact_name, :state, :sold_at, :photos_attributes, :main_photo_id
 
   belongs_to :user
   has_many :messages
   has_many :photos, :dependent => :destroy
+  has_one :main_photo
   accepts_nested_attributes_for :photos, :allow_destroy => true
   has_and_belongs_to_many :tags, uniq: true
   
@@ -56,6 +57,11 @@ class Item < ActiveRecord::Base
   #sets item sale date
   def set_sale_date_time
     @sold_at = Time.new
+  end
+
+  def set_main_photo (id)
+    self.main_photo_id = id
+    self.save
   end
 
 end

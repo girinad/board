@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121082341) do
+ActiveRecord::Schema.define(:version => 20130121112032) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(:version => 20130121082341) do
     t.string   "contact_name"
     t.string   "state"
     t.datetime "sold_at"
+    t.integer  "main_photo_id"
   end
 
+  add_index "items", ["main_photo_id"], :name => "index_items_on_main_photo_id"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
 
   create_table "items_tags", :force => true do |t|
@@ -46,10 +48,9 @@ ActiveRecord::Schema.define(:version => 20130121082341) do
 
   create_table "photos", :force => true do |t|
     t.string   "photo"
-    t.boolean  "primary_photo"
     t.integer  "item_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "photos", ["item_id"], :name => "index_photos_on_item_id"
