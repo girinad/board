@@ -13,8 +13,9 @@
   = @item.description
 
 #photos
-  - @item.photos.each do |photos|
-    = link_to(image_tag(photo.image.url(:thumb)), photo.image.url)
+  - @item.photos.each do |photo|
+    = link_to(image_tag(photo.photo.url(:thumb)), photo.photo.url)
+    %br
 
 #contact_phone
   %b

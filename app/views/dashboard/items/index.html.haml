@@ -4,6 +4,7 @@
 %table
   %tr
     %th= Item.human_attribute_name(:title)
+    %th
     %th= Item.human_attribute_name(:created_at)
     %th= Item.human_attribute_name(:contact_name)
     %th= Item.human_attribute_name(:contact_phone)
@@ -15,6 +16,7 @@
     %tr
       %td
         %b= link_to item.title, dashboard_item_path(item)
+      %td= #item.image goes here
       %td= l item.created_at, :format => :full
       %td= item.contact_name
       %td= item.contact_phone

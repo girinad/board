@@ -20,8 +20,9 @@
       - if photo.object.new_record?
         = photo.file_field :photo
       - else
-        = image_tag(photo.object.image.url(:thumb))
+        = image_tag(photo.object.photo.url(:thumb))
         = photo.check_box :_destroy
+      %br
 
   #contact_phone
     %b= f.label :contact_phone
