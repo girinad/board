@@ -13,7 +13,7 @@
   = @item.description
 
 #photos
-  @item.photos.each do |photos|
+  - @item.photos.each do |photos|
     = link_to(image_tag(photo.image.url(:thumb)), photo.image.url)
 
 #contact_phone
